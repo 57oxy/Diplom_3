@@ -12,11 +12,12 @@ class OrderPage(BasePage):
     @allure.step('Ищем заказ по номеру в Ленте заказов')
     def get_order_in_list(self, order):
         # Записываем положение заказа
-        locator = OrderPageLocators.ORDER_NUMBER_IN_LIST
+        path = OrderPageLocators.ORDER_NUMBER_IN_LIST[0]
+        locator = OrderPageLocators.ORDER_NUMBER_IN_LIST[1]
         # Корректируем форматирование заказа
         locator = locator.format(order)
-        # Возвращаем список заказов
-        return self.get_element_text(locator)
+        # Возвращаем текст элемента
+        return self.get_element_text((path, locator))
 
     @allure.step('Получаем общее количество заказов, выполненных за все время')
     def get_alltime_orders_total(self):

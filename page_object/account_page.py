@@ -1,6 +1,6 @@
 import allure
 from locators.account_page_locators import AccountPageLocators
-from locators.main_page_locators import MainPageLocators
+from locators.main_page_locators import HeadersLocators
 from page_object.base_page import BasePage
 
 
@@ -8,7 +8,7 @@ class AccountPage(BasePage):
     @allure.step('Переходим на страницу ЛК')
     def click_account_button(self):
         # Кликаем на Личный кабинет в хэдере
-        self.click_element(MainPageLocators.ACCOUNT_LINK)
+        self.click_element(HeadersLocators.ACCOUNT_LINK)
         # Ожидаем когда будет доступна ссылка на Профиль пользователя
         self.wait_until_element_visibility(15, AccountPageLocators.PROFILE_LINK)
 

@@ -1,13 +1,16 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators:
+class HeadersLocators:
     # Ссылка Личный кабинет в хэдере
     ACCOUNT_LINK = By.XPATH, '//*[@href="/account"]'
     # Ссылка Конструктор в хэдере
     CONSTRUCTOR_LINK = By.XPATH, '//p[text()="Конструктор"]/parent::a'
     # Ссылка Лента Заказов в хэдере
-    ORDER_LINK = By.XPATH, '//p[contains(text()="Лента Заказов")]'
+    ORDER_LIST_LINK = By.XPATH, '//p[text()="Лента Заказов"]/parent::a'
+
+
+class MainPageLocators:
     # Кнопка Войти в Аккаунт
     ENTER_BUTTON = By.XPATH, '//button[text()="Войти в аккаунт"]'
     # Заголовок Соберите бургер

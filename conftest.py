@@ -14,6 +14,7 @@ def driver():
     yield driver
     driver.quit()
 
+
 @pytest.fixture
 def create_user():
     login_pass, token = create_new_user()

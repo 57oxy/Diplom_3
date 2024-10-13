@@ -79,7 +79,7 @@ class TestMainPage:
         # Ищем Кнопку Оформить заказ
         main_page.find_element(MainPageLocators.ORDER_BUTTON)
         # Вызываем функцию перехода на страницу Лента заказов
-        main_page.click_orders_link()
+        main_page.click_order_button()
         # Ожидаем пока появится номер заказа во всплывающем окне
         main_page.wait_until_element_visibility(10, MainPageLocators.ORDER_NUMBER)
         # Проверяем, что отображается текст Ваш заказ начали готовить во всплывающем окне

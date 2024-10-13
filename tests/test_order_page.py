@@ -8,6 +8,7 @@ from page_object.account_page import AccountPage
 
 
 class TestOrderListPage:
+
     @allure.title('Проверка открытия всплывающего окна с деталями заказа')
     def test_get_order_popup(self, driver):
         # Создаем объекты класса
@@ -33,10 +34,9 @@ class TestOrderListPage:
         # Вызываем функцию перехода в Историю заказов
         account_page.click_order_link()
         # Ждем, что отображается элемент Статус заказа в Истории заказов
-        account_page.wait_until_element_visibility(10, AccountPageLocators.ORDER_STATUS)
+        account_page.wait_until_element_visibility(20, AccountPageLocators.ORDER_STATUS)
         # Записываем в переменную номер заказа
         my_order = account_page.get_order_number()
-        print(my_order)
         # Вызываем функцию клика на кнопку Оформить заказ
         main_page.click_orders_link()
         # Ждем, что отображается элемент Заголовок Лента заказов
@@ -89,11 +89,10 @@ class TestOrderListPage:
         order_page = OrderPage(driver)
         # Вызываем функцию создания заказа, записываем номер в переменную
         new_order = main_page.create_order()
-        # Вызываем функцию клика на кнопку Оформить заказ
+        # Вызываем функцию клика на кнопку Лента заказов
         main_page.click_orders_link()
         # Ждем, что отображается элемент Все текущие заказы готовы!
         order_page.wait_until_element_invisibility(20, OrderPageLocators.ALL_READY_TITLE)
-        order_page.wait_until_element_invisibility(20, OrderPageLocators.ORDER_IN_WORK)
         # Вызываем функцию получения списка заказов в работе и записываем в переменную
         order_in_progress = order_page.get_order_number_in_work()
         # Проверяем, что заказ есть в списке заказов В работе

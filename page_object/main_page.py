@@ -1,28 +1,27 @@
 import allure
-from locators.main_page_locators import MainPageLocators
+from locators.main_page_locators import MainPageLocators, HeadersLocators
 from locators.order_page_locators import OrderPageLocators
 from page_object.base_page import BasePage
-from helpers.constants import *
+from helpers.constants import URL
 
 
 class MainPage(BasePage):
     @allure.step('Переходим на страницу ЛК')
     def click_account_button(self):
         # Кликаем на ссылку Личный кабинет в хэдере
-        self.click_element(MainPageLocators.ACCOUNT_LINK)
+        self.click_element(HeadersLocators.ACCOUNT_LINK)
 
     @allure.step('Переходим на страницу Лента заказов')
     def click_orders_link(self):
         # Кликаем на Ленту Заказов в хэдере
-        self.click_element(OrderPageLocators.ORDER_LINK)
+        self.click_element(HeadersLocators.ORDER_LIST_LINK)
         # Ожидаем видимость элемента Заголовок Лента заказов
         self.wait_until_element_visibility(10, OrderPageLocators.ORDER_TITLE)
-
 
     @allure.step('Переходим в Конструктор')
     def click_constructor_button(self):
         # Кликаем на Конструктор в хэдере
-        self.click_element(MainPageLocators.CONSTRUCTOR_LINK)
+        self.click_element(HeadersLocators.CONSTRUCTOR_LINK)
         # Ожидаем видимость элемента Заголовок Конструктор
         self.wait_until_element_visibility(10, MainPageLocators.CONSTRUCTOR_TITLE)
 
@@ -42,7 +41,6 @@ class MainPage(BasePage):
     def click_order_button(self):
         # Кликаем на Кнопку Оформить заказ
         self.click_element(MainPageLocators.ORDER_BUTTON)
-        self.wait_until_element_visibility(10, MainPageLocators.INGREDIENT_POPUP_TITLE)
 
     @allure.step('Добавляем ингредиент "Флюоресцентная булка" в корзину заказа')
     def add_bun_to_basket(self):
